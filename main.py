@@ -54,7 +54,7 @@ with col1:
                 [@GregKamradt](https://twitter.com/GregKamradt). \n\n View Source Code on [Github](https://github.com/gkamradt/globalize-text-streamlit/blob/main/main.py)")
 
 with col2:
-    st.image(image='TweetScreenshot.png', width=500, caption='https://twitter.com/DannyRichman/status/1598254671591723008')
+    st.image(image='companylogo.jpg', caption='Our company motto')
 
 st.markdown("## Enter Your Email To Convert")
 
