@@ -1,4 +1,4 @@
-!pip install langchain
+pip install langchain
 
 import streamlit as st
 from langchain import PromptTemplate
