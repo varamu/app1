@@ -9,7 +9,7 @@ template = """
     - Convert the input text to a specified tone
     - Convert the input text to a specified dialect
 
-    Here are some examples different Tones:
+    Here are some examples different age groups:
     - Formal: We went to Barcelona for the weekend. We have a lot of things to tell you.
     - Informal: Went to Barcelona for the weekend. Lots to tell you.  
 
@@ -23,8 +23,8 @@ template = """
 
     Please start the email with a warm introduction. Add the introduction if you need to.
     
-    Below is the email, tone, and dialect:
-    TONE: {tone}
+    Below is the email, age group, and dialect:
+    Age group: {agegroup}
     DIALECT: {dialect}
     EMAIL: {email}
     
@@ -32,7 +32,7 @@ template = """
 """
 
 prompt = PromptTemplate(
-    input_variables=["tone", "dialect", "email"],
+    input_variables=["agegroup", "dialect", "email"],
     template=template,
 )
 
@@ -66,9 +66,9 @@ openai_api_key = get_api_key()
 
 col1, col2 = st.columns(2)
 with col1:
-    option_tone = st.selectbox(
-        'Which tone would you like your email to have?',
-        ('Formal', 'Informal'))
+    option_agegroup = st.selectbox(
+        'Which age group would you like your content to have?',
+        ('9-15', '16-19', '20-29', '30-39', '40-49', '50-59', '60-69', '70-79', '80-100'))
     
 with col2:
     option_dialect = st.selectbox(
@@ -100,7 +100,7 @@ if email_input:
 
     llm = load_LLM(openai_api_key=openai_api_key)
 
-    prompt_with_email = prompt.format(tone=option_tone, dialect=option_dialect, email=email_input)
+    prompt_with_email = prompt.format(agegroup=option_agegroup, dialect=option_dialect, email=email_input)
 
     formatted_email = llm(prompt_with_email)
 
