@@ -8,8 +8,9 @@ template = """
     CUSTOMER age group (y): {agegroup};
     CUSTOMER main Hobby: {hobby};
     TASK: Write a product description that is tailored into this customer's Age group and hobby. Use age group specific slang.;
-    FORMAT: Present the result in the following order: (PRODUCT DESCRIPTION), (USE CASE);
+    FORMAT: Present the result in the following order: (PRODUCT DESCRIPTION), (BENEFITS), (USE CASE);
     PRODUCT DESCRIPTION: describe the product in 5 sentences;
+    BENEFITS: describe in 3 sentences why this product is perfect considering customers age group and hobby;
     USE CASE: describe in 5 sentences an example weekend activity taking into account hobby {hobby} and age {agegroup};
 """
 
