@@ -11,7 +11,7 @@ template = """
     FORMAT: Present the result in the following order: (PRODUCT DESCRIPTION), (BENEFITS), (USE CASE);
     PRODUCT DESCRIPTION: describe the product in 5 sentences;
     BENEFITS: describe in 3 sentences why this product is perfect considering customers age group and height;
-    USE CASE: write a story in 5 sentences, of an example weekend activity taking into account hobby {hobby} and age {agegroup}, write a story in first person, example "I started my Saturday morning with ...";
+    USE CASE: write a story in 5 sentences, of an example weekend activity taking into account height {height} and age {agegroup}, write a story in first person, example "I started my Saturday morning with ...";
 """
 
 prompt = PromptTemplate(
