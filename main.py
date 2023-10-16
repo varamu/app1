@@ -43,15 +43,16 @@ def load_LLM(openai_api_key):
     return llm
 
 st.set_page_config(page_title="Customer tailored content", page_icon=":robot:")
-st.header("Personalized marketing content")
+st.header("Personalized marketing text generator")
 
 col1, col2 = st.columns(2)
 
 with col1:
-    st.markdown("Often professionals would like to improve their emails, but don't have the skills to do so. \n\n This tool \
-                will help you improve your email skills by converting your emails into a more professional format. This tool \
-                is powered by [LangChain](https://langchain.com/) and [OpenAI](https://openai.com) and made by \
-                [@GregKamradt](https://twitter.com/GregKamradt). \n\n View Source Code on [Github](https://github.com/gkamradt/globalize-text-streamlit/blob/main/main.py)")
+    st.markdown("Kasutusjuhend: 1) valmista ette tootekirjeldus (sisendtekst);\n
+2) määra tarbijasegemendid lähtuvalt vanuserühma ja hobbide kombinatsioonidest;\n
+3) sisesta ükshaaval tarbijasegmentide lõikes eeltoodud info äpi kasutajaliideses, saada ära;\n
+4) kopeeri ükshaaval tarbijasegmentide lõikes äpi väljundteksti kõnealuse toote tutvustuslehele.
+")
 
 with col2:
     st.image(image='companylogo.jpg', caption='Our company motto')
