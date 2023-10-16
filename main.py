@@ -3,9 +3,9 @@ from langchain import PromptTemplate
 from langchain.llms import OpenAI
 
 template = """
-    Below is an email that may be poorly worded.
+    Below is a content that may be poorly worded.
     Your goal is to:
-    - Properly format the email
+    - Properly format the content into product description
     - Convert the input text to a specified tone
     - Convert the input text to a specified dialect
 
@@ -21,18 +21,18 @@ template = """
     - American: I headed straight for the produce section to grab some fresh vegetables, like bell peppers and zucchini. After that, I made my way to the meat department to pick up some chicken breasts.
     - British: Well, I popped down to the local shop just the other day to pick up a few bits and bobs. As I was perusing the aisles, I noticed that they were fresh out of biscuits, which was a bit of a disappointment, as I do love a good cuppa with a biscuit or two.
 
-    Please start the email with a warm introduction. Add the introduction if you need to.
+    Please start the content with a warm introduction. Add the introduction if you need to.
     
-    Below is the email, age group, and dialect:
+    Below is the content, age group, and hobby:
     Age group: {agegroup}
-    DIALECT: {dialect}
-    EMAIL: {email}
+    Main Hobby: {hobby}
+    Content: {content}
     
-    YOUR {dialect} RESPONSE:
+    YOUR RESPONSE:
 """
 
 prompt = PromptTemplate(
-    input_variables=["agegroup", "dialect", "email"],
+    input_variables=["agegroup", "hobby", "content"],
     template=template,
 )
 
@@ -42,7 +42,7 @@ def load_LLM(openai_api_key):
     llm = OpenAI(temperature=.7, openai_api_key=openai_api_key)
     return llm
 
-st.set_page_config(page_title="Globalize Email", page_icon=":robot:")
+st.set_page_config(page_title="Customer tailored content", page_icon=":robot:")
 st.header("Globalize Text")
 
 col1, col2 = st.columns(2)
@@ -56,7 +56,7 @@ with col1:
 with col2:
     st.image(image='companylogo.jpg', caption='Our company motto')
 
-st.markdown("## Enter Your Email To Convert")
+st.markdown("## Enter Your Content To Convert")
 
 def get_api_key():
     input_text = st.text_input(label="OpenAI API Key ",  placeholder="Ex: sk-2twmA8tfCb8un4...", key="openai_api_key_input")
@@ -71,37 +71,37 @@ with col1:
         ('9-15', '16-19', '20-29', '30-39', '40-49', '50-59', '60-69', '70-79', '80-100'))
     
 with col2:
-    option_dialect = st.selectbox(
-        'Which English Dialect would you like?',
+    option_hobby = st.selectbox(
+        'Which is customer's main hobby?',
         ('American', 'British'))
 
 def get_text():
-    input_text = st.text_area(label="Email Input", label_visibility='collapsed', placeholder="Your Email...", key="email_input")
+    input_text = st.text_area(label="Content Input", label_visibility='collapsed', placeholder="Your content...", key="content_input")
     return input_text
 
-email_input = get_text()
+content_input = get_text()
 
-if len(email_input.split(" ")) > 700:
-    st.write("Please enter a shorter email. The maximum length is 700 words.")
+if len(content_input.split(" ")) > 700:
+    st.write("Please enter a shorter content. The maximum length is 700 words.")
     st.stop()
 
 def update_text_with_example():
     print ("in updated")
-    st.session_state.email_input = "Sally I am starts work at yours monday from dave"
+    st.session_state.content_input = "t shirts, all clolors, cotton, responsible manufacturing"
 
-st.button("*See An Example*", type='secondary', help="Click to see an example of the email you will be converting.", on_click=update_text_with_example)
+st.button("*See An Example*", type='secondary', help="Click to see an example of the content you will be converting.", on_click=update_text_with_example)
 
-st.markdown("### Your Converted Email:")
+st.markdown("### Your customer tailored content:")
 
-if email_input:
+if content_input:
     if not openai_api_key:
         st.warning('Please insert OpenAI API Key. Instructions [here](https://help.openai.com/en/articles/4936850-where-do-i-find-my-secret-api-key)', icon="⚠️")
         st.stop()
 
     llm = load_LLM(openai_api_key=openai_api_key)
 
-    prompt_with_email = prompt.format(agegroup=option_agegroup, dialect=option_dialect, email=email_input)
+    prompt_with_content = prompt.format(agegroup=option_agegroup, hobby=hobby_input, content=content_input)
 
-    formatted_email = llm(prompt_with_email)
+    formatted_content = llm(prompt_with_content)
 
-    st.write(formatted_email)
+    st.write(formatted_content)
