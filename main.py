@@ -52,11 +52,6 @@ with col1:
         'Which age group would you like your content to target?',
         ('9-15', '16-19', '20-29', '30-39', '40-49', '50-59', '60-69', '70-79', '80-100'))
     
-#with col2:
-#    option_hobby = st.selectbox(
-#        'Customers main hobby',
-#        ('American', 'British'))
-
 def get_hobby():
     input_text = st.text_input(label="Customers main hobby", key="hobby_input")
     return input_text
