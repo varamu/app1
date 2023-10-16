@@ -43,7 +43,7 @@ def load_LLM(openai_api_key):
     return llm
 
 st.set_page_config(page_title="Customer tailored content", page_icon=":robot:")
-st.header("Personalized marketing text generator")
+st.header("Personaliseeritud turundusteksti konverter")
 
 col1, col2 = st.columns(2)
 
