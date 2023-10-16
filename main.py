@@ -43,7 +43,7 @@ def load_LLM(openai_api_key):
     return llm
 
 st.set_page_config(page_title="Customer tailored content", page_icon=":robot:")
-st.header("Globalize Text")
+st.header("Personalized marketing content")
 
 col1, col2 = st.columns(2)
 
@@ -67,13 +67,19 @@ openai_api_key = get_api_key()
 col1, col2 = st.columns(2)
 with col1:
     option_agegroup = st.selectbox(
-        'Which age group would you like your content to have?',
+        'Which age group would you like your content to target?',
         ('9-15', '16-19', '20-29', '30-39', '40-49', '50-59', '60-69', '70-79', '80-100'))
     
-with col2:
-    option_hobby = st.selectbox(
-        'Which is customers main hobby?',
-        ('American', 'British'))
+#with col2:
+#    option_hobby = st.selectbox(
+#        'Customers main hobby',
+#        ('American', 'British'))
+
+def get_hobby():
+    input_text = st.text_input(label="Customers main hobby", key="hobby_input")
+    return input_text
+
+hobby_input = get_hobby()
 
 def get_text():
     input_text = st.text_area(label="Content Input", label_visibility='collapsed', placeholder="Your content...", key="content_input")
