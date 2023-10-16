@@ -72,7 +72,7 @@ with col1:
     
 with col2:
     option_hobby = st.selectbox(
-        'Which is customer's main hobby?',
+        'Which is customers main hobby?',
         ('American', 'British'))
 
 def get_text():
