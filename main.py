@@ -48,8 +48,7 @@ st.header("Personalized marketing text generator")
 col1, col2 = st.columns(2)
 
 with col1:
-    st.markdown("Kasutusjuhend: 1- valmista ette tootekirjeldus (sisendtekst). 2- määra tarbijasegemendid lähtuvalt vanuserühma ja hobbide kombinatsioonidest. 3- sisesta ükshaaval tarbijasegmentide lõikes eeltoodud info äpi kasutajaliideses, saada ära. 4- kopeeri ükshaaval tarbijasegmentide lõikes äpi väljundteksti kõnealuse toote tutvustuslehele.
-")
+    st.markdown("Kasutusjuhend: 1- valmista ette tootekirjeldus (sisendtekst). 2- määra tarbijasegemendid lähtuvalt vanuserühma ja hobbide kombinatsioonidest. 3- sisesta ükshaaval tarbijasegmentide lõikes eeltoodud info äpi kasutajaliideses, saada ära. 4- kopeeri ükshaaval tarbijasegmentide lõikes äpi väljundteksti kõnealuse toote tutvustuslehele.")
 
 with col2:
     st.image(image='companylogo.jpg', caption='Our company motto')
